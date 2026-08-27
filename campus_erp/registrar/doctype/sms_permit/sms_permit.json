@@ -1,0 +1,196 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-08-15 12:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "student",
+  "course",
+  "year_level",
+  "total_fee",
+  "payment",
+  "due_payment",
+  "semester",
+  "school_year",
+  "term",
+  "status",
+  "permit_no",
+  "subjects"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PERMIT-.YY.-.#####",
+   "default": "PERMIT-.YY.-.#####",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "course",
+   "fieldtype": "Link",
+   "label": "Course",
+   "options": "Program",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "year_level",
+   "fieldtype": "Int",
+   "label": "Year Level",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "total_fee",
+   "fieldtype": "Currency",
+   "label": "Total Fee",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "payment",
+   "fieldtype": "Currency",
+   "label": "Payment",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "due_payment",
+   "fieldtype": "Currency",
+   "label": "Due Payment",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "semester",
+   "fieldtype": "Int",
+   "label": "Semester",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "school_year",
+   "fieldtype": "Data",
+   "label": "School Year",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "term",
+   "fieldtype": "Data",
+   "label": "Exam Period",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending\nEligible\nIssued",
+   "default": "Pending",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "permit_no",
+   "fieldtype": "Data",
+   "label": "Permit No",
+   "reqd": 0,
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "subjects",
+   "fieldtype": "Table",
+   "label": "Subjects",
+   "options": "SMS Permit Subject",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  }
+ ],
+ "icon": "fa fa-file",
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-08-15 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Registrar",
+ "name": "SMS Permit",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Registrar",
+   "share": 1,
+   "write": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Administrator",
+   "share": 1,
+   "write": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Student",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

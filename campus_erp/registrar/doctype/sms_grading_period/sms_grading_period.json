@@ -1,0 +1,114 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:{course_type}-{exam_period}-{school_term}",
+ "creation": "2026-08-15 12:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "course_type",
+  "school_term",
+  "exam_period",
+  "semester_number",
+  "required_payment_percentage"
+ ],
+ "fields": [
+  {
+   "fieldname": "course_type",
+   "fieldtype": "Select",
+   "label": "Course Type",
+   "options": "Quarter (HS/Elementary)\nPrelim/Midterm/Finals\nTrisemester\nFull Payment Only",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "school_term",
+   "fieldtype": "Data",
+   "label": "School Term",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "exam_period",
+   "fieldtype": "Select",
+   "label": "Exam Period",
+   "options": "Prelim\nMidterm\nFinals\nQuarter 1\nQuarter 2\nQuarter 3\nQuarter 4",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "semester_number",
+   "fieldtype": "Int",
+   "label": "Semester",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "required_payment_percentage",
+   "fieldtype": "Percent",
+   "label": "Required Payment %",
+   "description": "Drives grade-unlock + permit eligibility — merges legacy semester + periodpercentage",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  }
+ ],
+ "icon": "fa fa-file",
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-08-15 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Registrar",
+ "name": "SMS Grading Period",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Registrar",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

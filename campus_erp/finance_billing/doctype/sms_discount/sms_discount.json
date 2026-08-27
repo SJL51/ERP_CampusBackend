@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:discount_code",
+ "creation": "2026-08-15 12:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "discount_code",
+  "description",
+  "tf_discount_mode",
+  "tf_discount_value",
+  "misc_discount_mode",
+  "misc_discount_value",
+  "on_tf",
+  "tf_base",
+  "is_disabled"
+ ],
+ "fields": [
+  {
+   "fieldname": "discount_code",
+   "fieldtype": "Data",
+   "label": "Discount Code",
+   "reqd": 1,
+   "read_only": 0,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tf_discount_mode",
+   "fieldtype": "Select",
+   "label": "Tuition Fee Discount Mode",
+   "options": "Fixed Amount\nPercentage",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "tf_discount_value",
+   "fieldtype": "Float",
+   "label": "Tuition Fee Discount Value",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "misc_discount_mode",
+   "fieldtype": "Select",
+   "label": "Misc Fee Discount Mode",
+   "options": "Fixed Amount\nPercentage",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "misc_discount_value",
+   "fieldtype": "Float",
+   "label": "Misc Fee Discount Value",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "on_tf",
+   "fieldtype": "Check",
+   "label": "Base Includes Tuition Fee",
+   "description": "Whether the base for percentage calc includes Tuition Fee",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "tf_base",
+   "fieldtype": "Select",
+   "label": "Tuition Fee Base",
+   "options": "Tuition Only\nTuition + Misc",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "is_disabled",
+   "fieldtype": "Check",
+   "label": "Is Disabled",
+   "description": "Replaces legacy soft-delete flag",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 1
+  }
+ ],
+ "icon": "fa fa-file",
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-08-15 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Finance Billing",
+ "name": "SMS Discount",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Finance Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Cashier",
+   "share": 1,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Registrar",
+   "share": 1,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

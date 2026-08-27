@@ -1,0 +1,475 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-08-15 12:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "student",
+  "student_name",
+  "program_enrollment",
+  "program",
+  "company",
+  "currency",
+  "school_year",
+  "school_term",
+  "semester",
+  "year_level",
+  "student_type",
+  "posting_date",
+  "due_date",
+  "tuition",
+  "new_tuition",
+  "misc_fee",
+  "other_fee",
+  "assessment",
+  "discount_type",
+  "discount_percent",
+  "other_discount",
+  "misc_discount",
+  "scholarship",
+  "subsidy",
+  "old_account",
+  "old_assessment",
+  "old_account_payment",
+  "total_fee",
+  "payment",
+  "receivable",
+  "refnum",
+  "cor_reference",
+  "receivable_account",
+  "cost_center",
+  "status",
+  "is_reassessment",
+  "branch",
+  "assessment_detail",
+  "payment_schedule",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "default": "ASM-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "ASM-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "label": "Student",
+   "options": "Student",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "label": "Student Name",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "program_enrollment",
+   "fieldtype": "Link",
+   "label": "Program Enrollment",
+   "options": "Program Enrollment",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "program",
+   "fieldtype": "Link",
+   "label": "Program",
+   "options": "Program",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "description": "e.g. \"2025-2026\"",
+   "fieldname": "school_year",
+   "fieldtype": "Data",
+   "label": "School Year",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "description": "legacy composite SY+Semester code",
+   "fieldname": "school_term",
+   "fieldtype": "Data",
+   "label": "School Term",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "semester",
+   "fieldtype": "Int",
+   "label": "Semester",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "year_level",
+   "fieldtype": "Data",
+   "label": "Year Level",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "student_type",
+   "fieldtype": "Select",
+   "label": "Student Type",
+   "options": "New\nOld\nTransferee\nReturnee",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "tuition",
+   "fieldtype": "Currency",
+   "label": "Tuition",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "description": "tuition after discount",
+   "fieldname": "new_tuition",
+   "fieldtype": "Currency",
+   "label": "New Tuition",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "misc_fee",
+   "fieldtype": "Currency",
+   "label": "Misc Fee",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "other_fee",
+   "fieldtype": "Currency",
+   "label": "Other Fee",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "description": "gross assessment = tuition+misc_fee+other_fee, before discount",
+   "fieldname": "assessment",
+   "fieldtype": "Currency",
+   "label": "Assessment",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "discount_type",
+   "fieldtype": "Link",
+   "label": "Discount Type",
+   "options": "SMS Discount",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "description": "frozen snapshot value used at compute time",
+   "fieldname": "discount_percent",
+   "fieldtype": "Percent",
+   "label": "Discount Percent",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "other_discount",
+   "fieldtype": "Currency",
+   "label": "Other Discount",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "misc_discount",
+   "fieldtype": "Currency",
+   "label": "Misc Discount",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "scholarship",
+   "fieldtype": "Link",
+   "label": "Scholarship",
+   "options": "Fee Category",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "subsidy",
+   "fieldtype": "Currency",
+   "label": "Subsidy",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "description": "carried-forward balance from prior term",
+   "fieldname": "old_account",
+   "fieldtype": "Currency",
+   "label": "Old Account",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "description": "prior term's assessment snapshot",
+   "fieldname": "old_assessment",
+   "fieldtype": "Currency",
+   "label": "Old Assessment",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "description": "prior balance payment",
+   "fieldname": "old_account_payment",
+   "fieldtype": "Currency",
+   "label": "Old Account Payment",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "description": "final computed total, the single canonical formula",
+   "fieldname": "total_fee",
+   "fieldtype": "Currency",
+   "label": "Total Fee",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "description": "payment to date; recomputed by the API layer's payment-recording function",
+   "fieldname": "payment",
+   "fieldtype": "Currency",
+   "label": "Payment",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "description": "total_fee - payment",
+   "fieldname": "receivable",
+   "fieldtype": "Currency",
+   "label": "Receivable",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "description": "opening ledger reference",
+   "fieldname": "refnum",
+   "fieldtype": "Data",
+   "label": "Ref No",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "description": "registrar-owned COR document number",
+   "fieldname": "cor_reference",
+   "fieldtype": "Data",
+   "label": "COR Reference",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "receivable_account",
+   "fieldtype": "Link",
+   "label": "Receivable Account",
+   "options": "Account",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nAssessed\nReassessed\nWithdrawn\nCancelled",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "is_reassessment",
+   "fieldtype": "Check",
+   "label": "Is Reassessment",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "assessment_detail",
+   "fieldtype": "Table",
+   "label": "Assessment Detail",
+   "options": "SMS Student Assessment Detail",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "payment_schedule",
+   "fieldtype": "Table",
+   "label": "Payment Schedule",
+   "options": "Payment Schedule",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "SMS Student Assessment",
+   "no_copy": 1,
+   "read_only": 1,
+   "in_list_view": 0
+  }
+ ],
+ "icon": "fa fa-file",
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-08-15 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Finance Billing",
+ "name": "SMS Student Assessment",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Finance Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 0,
+   "cancel": 0,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Cashier",
+   "share": 1,
+   "submit": 0,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "SMS Registrar",
+   "share": 0,
+   "write": 0
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "SMS Student",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:{code_type}-{code}",
+ "creation": "2026-08-15 09:30:00.000000",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "engine": "InnoDB",
+ "field_order": [
+  "code_type",
+  "code",
+  "particular"
+ ],
+ "fields": [
+  {
+   "fieldname": "code_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Code Type",
+   "options": "Nationality\nReligion\nFee\nScholarship\nLibrary Category\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "particular",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Particular",
+   "reqd": 1
+  }
+ ],
+ "icon": "fa fa-tags",
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-15 09:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Administration",
+ "name": "SMS Code",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

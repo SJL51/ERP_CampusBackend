@@ -1,0 +1,141 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-08-15 12:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "student",
+  "serial_no",
+  "so_no",
+  "date_issued",
+  "date_grad",
+  "document_wording",
+  "receivable_balance_at_issuance",
+  "balance_cleared_confirmed"
+ ],
+ "fields": [
+  {
+   "default": "DIP-.YY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "DIP-.YY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Student",
+   "options": "Student",
+   "reqd": 1
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "label": "Serial No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "so_no",
+   "fieldtype": "Data",
+   "label": "S.O. No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_issued",
+   "fieldtype": "Date",
+   "label": "Date Issued",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_grad",
+   "fieldtype": "Date",
+   "label": "Date Graduated",
+   "reqd": 1
+  },
+  {
+   "description": "Snapshot at issuance",
+   "fieldname": "document_wording",
+   "fieldtype": "Select",
+   "label": "Document Wording",
+   "options": "Diploma\nCertificate"
+  },
+  {
+   "fieldname": "receivable_balance_at_issuance",
+   "fieldtype": "Currency",
+   "label": "Receivable Balance at Issuance",
+   "read_only": 1
+  },
+  {
+   "description": "NEW — fixes the legacy's broken balance gate; must be checked before submit",
+   "fieldname": "balance_cleared_confirmed",
+   "fieldtype": "Check",
+   "label": "Balance Cleared (Confirmed)",
+   "reqd": 1
+  }
+ ],
+ "icon": "fa fa-file",
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-08-15 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Registrar",
+ "name": "SMS Diploma Issuance",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Registrar",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMS Administrator",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 0,
+   "print": 0,
+   "read": 1,
+   "report": 0,
+   "role": "SMS Student",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

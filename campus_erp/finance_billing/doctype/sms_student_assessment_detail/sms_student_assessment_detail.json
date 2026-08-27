@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-15 12:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "particular",
+  "item_type",
+  "fee_code",
+  "header_code",
+  "amount",
+  "true_amount",
+  "amount_paid"
+ ],
+ "fields": [
+  {
+   "fieldname": "particular",
+   "fieldtype": "Data",
+   "label": "Particular",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "item_type",
+   "fieldtype": "Select",
+   "label": "Item Type",
+   "options": "Tuition\nMisc Fee\nDiscount\nSurcharge\nPrevious Balance\nScholarship\nTotal",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "fee_code",
+   "fieldtype": "Link",
+   "label": "Fee Code",
+   "options": "Fee Category",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "description": "Filtered to Fee Category rows with code_type=Header (custom field added in Phase 2's custom-fields pass)",
+   "fieldname": "header_code",
+   "fieldtype": "Link",
+   "label": "Header Code",
+   "options": "Fee Category",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "reqd": 1,
+   "read_only": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "true_amount",
+   "fieldtype": "Currency",
+   "label": "True Amount",
+   "description": "amount actually billed after adjustment",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Currency",
+   "label": "Amount Paid",
+   "reqd": 0,
+   "read_only": 0,
+   "in_list_view": 0
+  }
+ ],
+ "icon": "fa fa-file",
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-08-15 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Finance Billing",
+ "name": "SMS Student Assessment Detail",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

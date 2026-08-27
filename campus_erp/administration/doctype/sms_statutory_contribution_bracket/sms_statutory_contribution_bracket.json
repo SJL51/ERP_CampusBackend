@@ -1,0 +1,170 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-08-15 09:30:00.000000",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "engine": "InnoDB",
+ "field_order": [
+  "bracket_type",
+  "company",
+  "column_break_1",
+  "range_from",
+  "range_to",
+  "section_break_1",
+  "er_share",
+  "ee_share",
+  "column_break_2",
+  "ec_share",
+  "sb",
+  "total",
+  "audit_section",
+  "encoder",
+  "column_break_3",
+  "date_entered",
+  "date_edited"
+ ],
+ "fields": [
+  {
+   "fieldname": "bracket_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Bracket Type",
+   "options": "SSS\nPhilHealth\nPag-IBIG",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "description": "Branch scoping surrogate, pending the single- vs. multi-branch decision (blueprint §1.4/§8)."
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "range_from",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Salary Range From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "range_to",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Salary Range To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Contribution Shares"
+  },
+  {
+   "fieldname": "er_share",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Employer Share (ER)"
+  },
+  {
+   "fieldname": "ee_share",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Employee Share (EE)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.bracket_type=='SSS'",
+   "fieldname": "ec_share",
+   "fieldtype": "Currency",
+   "label": "Employee Compensation (EC)",
+   "description": "SSS-only: Employee Compensation Program contribution."
+  },
+  {
+   "depends_on": "eval:doc.bracket_type=='PhilHealth'",
+   "fieldname": "sb",
+   "fieldtype": "Currency",
+   "label": "Salary Bracket (SB)",
+   "description": "PhilHealth-only: the salary-bracket ceiling used to compute the premium."
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "Total Contribution",
+   "description": "ER + EE (+ EC for SSS)."
+  },
+  {
+   "fieldname": "audit_section",
+   "fieldtype": "Section Break",
+   "label": "Audit"
+  },
+  {
+   "fieldname": "encoder",
+   "fieldtype": "Link",
+   "label": "Encoder",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_entered",
+   "fieldtype": "Datetime",
+   "label": "Date Entered",
+   "read_only": 1
+  },
+  {
+   "fieldname": "date_edited",
+   "fieldtype": "Datetime",
+   "label": "Date Edited",
+   "read_only": 1
+  }
+ ],
+ "icon": "fa fa-percent",
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-08-15 09:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Administration",
+ "name": "SMS Statutory Contribution Bracket",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}
