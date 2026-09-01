@@ -56,7 +56,8 @@
   "undertime_rate_per_hour",
   "work_status",
   "with_atm_card",
-  "leaves"
+  "leaves",
+  "loan_ledgers"
  ],
  "fields": [
   {
@@ -336,12 +337,18 @@
    "fieldtype": "Table",
    "label": "Leaves",
    "options": "SMS Personnel Leaves"
+  },
+  {
+   "fieldname": "loan_ledgers",
+   "fieldtype": "Table",
+   "label": "Loan Ledgers",
+   "options": "SMS Personnel Loan"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-08-26 16:09:15.245698",
+ "modified": "2026-08-29 08:41:54.097923",
  "modified_by": "Administrator",
  "module": "Personnel",
  "name": "Personnel Info",
