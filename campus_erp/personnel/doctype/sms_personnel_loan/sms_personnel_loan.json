@@ -15,7 +15,15 @@
   "reason",
   "employee_id",
   "employee_name",
-  "department"
+  "department",
+  "status",
+  "interest_rate",
+  "term",
+  "interest_cost",
+  "amortization",
+  "loan_balance",
+  "recommended_by",
+  "approved_by"
  ],
  "fields": [
   {
@@ -73,6 +81,49 @@
    "fieldname": "department",
    "fieldtype": "Data",
    "label": "Department"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending\nApproved\nRejected"
+  },
+  {
+   "fieldname": "interest_rate",
+   "fieldtype": "Float",
+   "label": "Interest Rate (%)"
+  },
+  {
+   "fieldname": "term",
+   "fieldtype": "Int",
+   "label": "Term (months)"
+  },
+  {
+   "fieldname": "interest_cost",
+   "fieldtype": "Currency",
+   "label": "Interest Cost"
+  },
+  {
+   "fieldname": "amortization",
+   "fieldtype": "Currency",
+   "label": "Amortization"
+  },
+  {
+   "fieldname": "loan_balance",
+   "fieldtype": "Currency",
+   "label": "Loan Balance"
+  },
+  {
+   "fieldname": "recommended_by",
+   "fieldtype": "Data",
+   "label": "Recommended By"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Data",
+   "label": "Approved By"
   }
  ],
  "grid_page_length": 50,

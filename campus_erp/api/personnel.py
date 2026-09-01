@@ -102,8 +102,9 @@ def list_recent_loans(search=None, limit=20):
     return frappe.get_all(
         "SMS Personnel Loan",
         filters=filters,
-        fields=["parent as personnel_info", "employee_id", "employee_name", "department",
-                "al_no", "date", "loan_type", "basic_pay", "previous_loan", "amount", "reason"],
+        fields=["name", "parent as personnel_info", "employee_id", "employee_name", "department",
+                "al_no", "date", "loan_type", "basic_pay", "previous_loan", "amount", "reason",
+                "status", "interest_rate", "term", "interest_cost", "amortization", "loan_balance", "recommended_by", "approved_by"],
         order_by="date desc",
         limit_page_length=limit,
     )
@@ -123,9 +124,77 @@ def add_loan_application(employee_id, loan_type, amount, reason=None, basic_pay=
         "previous_loan": previous_loan,
         "amount": amount,
         "reason": reason,
+        "status": "Pending",
     })
     parent.save()
     return {"success": True, "name": row.name, "al_no": al_no}
+
+@frappe.whitelist()
+def list_pending_loans(search=None, limit=20):
+    filters = [["status", "=", "Pending"]]
+    if search:
+        filters.append(["employee_name", "like", f"%{search}%"])
+    return frappe.get_all(
+        "SMS Personnel Loan",
+        filters=filters,
+        fields=["name", "parent as personnel_info", "employee_id", "employee_name", "department",
+                "al_no", "date", "loan_type", "basic_pay", "previous_loan", "amount", "reason",
+                "status", "interest_rate", "term", "interest_cost", "amortization", "loan_balance", "recommended_by", "approved_by"],
+        order_by="date desc",
+        limit_page_length=limit,
+    )
+
+@frappe.whitelist()
+def compute_loan_terms(amount, interest_rate, term):
+    """
+    Flat-rate add-on interest, not reducing-balance — UNVERIFIED against actual
+    policy, see CLAUDE.md Known Gaps. Kept server-side so the frontend's
+    "Compute" button and any future report/payslip logic can't drift apart.
+    """
+    amount = float(amount)
+    interest_rate = float(interest_rate)
+    term = int(term)
+    interest_cost = amount * (interest_rate / 100)
+    loan_balance = amount + interest_cost
+    amortization = loan_balance / term if term else 0
+    return {
+        "interest_cost": round(interest_cost, 2),
+        "amortization": round(amortization, 2),
+        "loan_balance": round(loan_balance, 2),
+    }
+
+@frappe.whitelist()
+def approve_loan_application(employee_id, row_name, interest_rate=None, term=None, interest_cost=None, amortization=None, loan_balance=None, recommended_by=None, approved_by=None):
+    parent = frappe.get_doc("Personnel Info", employee_id)
+    for row in parent.loan_ledgers:
+        if row.name == row_name:
+            row.status = "Approved"
+            row.interest_rate = interest_rate
+            row.term = term
+            row.interest_cost = interest_cost
+            row.amortization = amortization
+            row.loan_balance = loan_balance
+            row.recommended_by = recommended_by
+            row.approved_by = approved_by
+            break
+    else:
+        frappe.throw(f"Loan row {row_name} not found on employee {employee_id}")
+    parent.save()
+    return {"success": True}
+
+@frappe.whitelist()
+def reject_loan_application(employee_id, row_name, recommended_by=None, approved_by=None):
+    parent = frappe.get_doc("Personnel Info", employee_id)
+    for row in parent.loan_ledgers:
+        if row.name == row_name:
+            row.status = "Rejected"
+            row.recommended_by = recommended_by
+            row.approved_by = approved_by
+            break
+    else:
+        frappe.throw(f"Loan row {row_name} not found on employee {employee_id}")
+    parent.save()
+    return {"success": True}
 
 @frappe.whitelist()
 def get_personnel_kpis():
