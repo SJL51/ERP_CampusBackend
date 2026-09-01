@@ -22,8 +22,9 @@ def list_recent_leaves(search=None, limit=20):
     return frappe.get_all(
         "SMS Personnel Leaves",
         filters=filters,
-        fields=["parent as personnel_info", "employee_id", "employee_name", "department",
-                "leave_type", "from_date", "to_date", "half_day", "reason", "date"],
+        fields=["name", "parent as personnel_info", "employee_id", "employee_name", "department",
+                "leave_type", "from_date", "to_date", "half_day", "reason", "date", "status",
+                "days_approved", "with_pay", "without_pay", "immediate_superior", "hrd_head"],
         order_by="date desc",
         limit_page_length=limit,
     )
@@ -42,9 +43,57 @@ def add_leave_application(employee_id, leave_type, from_date, to_date, half_day=
         "to_date": to_date,
         "half_day": half_day,
         "reason": reason,
+        "status": "Pending",
     })
     parent.save()
     return {"success": True, "name": row.name}
+
+@frappe.whitelist()
+def list_pending_leaves(search=None, limit=20):
+    filters = [["status", "=", "Pending"]]
+    if search:
+        filters.append(["employee_name", "like", f"%{search}%"])
+    return frappe.get_all(
+        "SMS Personnel Leaves",
+        filters=filters,
+        fields=["name", "parent as personnel_info", "employee_id", "employee_name", "department",
+                "leave_type", "from_date", "to_date", "half_day", "reason", "date", "status",
+                "days_approved", "with_pay", "without_pay", "immediate_superior", "hrd_head"],
+        order_by="date desc",
+        limit_page_length=limit,
+    )
+
+@frappe.whitelist()
+def approve_leave_application(employee_id, row_name, days_approved=None, with_pay=None, without_pay=None, immediate_superior=None, hrd_head=None):
+    parent = frappe.get_doc("Personnel Info", employee_id)
+    for row in parent.leaves:
+        if row.name == row_name:
+            row.status = "Approved"
+            row.days_approved = days_approved
+            row.with_pay = with_pay
+            row.without_pay = without_pay
+            row.immediate_superior = immediate_superior
+            row.hrd_head = hrd_head
+            break
+    else:
+        frappe.throw(f"Leave row {row_name} not found on employee {employee_id}")
+    parent.save()
+    return {"success": True}
+
+@frappe.whitelist()
+def reject_leave_application(employee_id, row_name, immediate_superior=None, hrd_head=None):
+    parent = frappe.get_doc("Personnel Info", employee_id)
+    for row in parent.leaves:
+        if row.name == row_name:
+            row.status = "Rejected"
+            row.immediate_superior = immediate_superior
+            row.hrd_head = hrd_head
+            break
+    else:
+        frappe.throw(f"Leave row {row_name} not found on employee {employee_id}")
+    parent.save()
+    return {"success": True}
+
 @frappe.whitelist()
 def list_recent_loans(search=None, limit=20):
     filters = []
