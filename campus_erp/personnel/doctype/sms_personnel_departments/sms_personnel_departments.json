@@ -55,5 +55,5 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "autoname": "field:department"
+ "autoname": "hash"
 }
