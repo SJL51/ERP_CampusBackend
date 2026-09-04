@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-09-02 08:53:24.317493",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "fullname",
+  "from_date",
+  "to_date",
+  "from_time",
+  "to_time",
+  "reason",
+  "number_of_hours",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "fullname",
+   "fieldtype": "Data",
+   "label": "Fullname"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To"
+  },
+  {
+   "fieldname": "from_time",
+   "fieldtype": "Time",
+   "label": "From"
+  },
+  {
+   "fieldname": "to_time",
+   "fieldtype": "Time",
+   "label": "To"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason"
+  },
+  {
+   "fieldname": "number_of_hours",
+   "fieldtype": "Int",
+   "label": "Number of Hours"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending\nApproved\nRejected"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-09-02 14:42:17.148923",
+ "modified_by": "Administrator",
+ "module": "Personnel",
+ "name": "SMS Personnel Overtime",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
