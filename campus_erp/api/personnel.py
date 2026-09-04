@@ -225,3 +225,34 @@ def get_employee(employee_id):
         ["name as employee_id", "first_name", "last_name", "department"],
         as_dict=True,
     )
+
+@frappe.whitelist()
+def list_approved_loans(search=None, limit=20):
+    filters = [["status", "=", "Approved"]]
+    if search:
+        filters.append(["employee_name", "like", f"%{search}%"])
+    return frappe.get_all(
+        "SMS Personnel Loan",
+        filters=filters,
+        fields=["name", "parent as personnel_info", "employee_id", "employee_name", "department",
+                "al_no", "date", "loan_type", "amount", "interest_rate", "term",
+                "interest_cost", "amortization", "loan_balance", "recommended_by", "approved_by"],
+        order_by="date desc",
+        limit_page_length=limit,
+    )
+
+@frappe.whitelist()
+def release_loan_application(personnel_info, row_name, released_by=None):
+    parent = frappe.get_doc("Personnel Info", personnel_info)
+    for row in parent.loan_ledgers:
+        if row.name == row_name:
+            if not row.approved_by:
+                frappe.throw("This loan cannot be released until it has a recorded Approved By value.")
+            row.status = "Released"
+            row.released_by = released_by
+            row.date_released = frappe.utils.now_datetime()
+            break
+    else:
+        frappe.throw(f"Loan row {row_name} not found on Personnel Info {personnel_info}")
+    parent.save()
+    return {"success": True}

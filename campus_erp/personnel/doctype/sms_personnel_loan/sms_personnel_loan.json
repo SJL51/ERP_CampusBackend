@@ -19,11 +19,14 @@
   "status",
   "interest_rate",
   "term",
+  "deduction_schedule",
   "interest_cost",
   "amortization",
   "loan_balance",
   "recommended_by",
-  "approved_by"
+  "approved_by",
+  "released_by",
+  "date_released"
  ],
  "fields": [
   {
@@ -88,7 +91,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "Pending\nApproved\nRejected"
+   "options": "Pending\nApproved\nRejected\nReleased"
   },
   {
    "fieldname": "interest_rate",
@@ -99,6 +102,13 @@
    "fieldname": "term",
    "fieldtype": "Int",
    "label": "Term (months)"
+  },
+  {
+   "fieldname": "deduction_schedule",
+   "fieldtype": "Select",
+   "label": "Deduction Schedule",
+   "options": "1-15\n16-30\nEvery Period",
+   "default": "Every Period"
   },
   {
    "fieldname": "interest_cost",
@@ -124,6 +134,17 @@
    "fieldname": "approved_by",
    "fieldtype": "Data",
    "label": "Approved By"
+  },
+  {
+    "fieldname": "released_by",
+    "fieldtype": "Data",
+    "label": "Released By"
+  },
+  {
+    "fieldname": "date_released",
+    "fieldtype": "Datetime",
+    "label": "Date Released",
+    "read_only": 1
   }
  ],
  "grid_page_length": 50,
