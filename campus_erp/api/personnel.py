@@ -2,16 +2,27 @@ import frappe
 
 @frappe.whitelist()
 def search_personnel(query):
-    query = f"%{query}%"
-    return frappe.get_all(
-        "Personnel Info",
-        or_filters=[
-            ["first_name", "like", query],
-            ["last_name", "like", query],
-            ["middle_name", "like", query],
-        ],
-        fields=["name as employee_id", "first_name", "last_name", "middle_name", "department"],
-        limit_page_length=10,
+    words = [w for w in query.strip().split() if w]
+    if not words:
+        return []
+    conditions = []
+    values = {}
+    for i, word in enumerate(words):
+        param = f"w{i}"
+        values[param] = f"%{word}%"
+        conditions.append(
+            f"(first_name like %({param})s or last_name like %({param})s or middle_name like %({param})s)"
+        )
+    where_clause = " and ".join(conditions)
+    return frappe.db.sql(
+        f"""
+        select name as personnel_info, employee_id, first_name, last_name, middle_name, department
+        from `tabPersonnel Info`
+        where {where_clause}
+        limit 10
+        """,
+        values,
+        as_dict=True,
     )
 
 @frappe.whitelist()
@@ -216,13 +227,12 @@ def get_personnel_kpis():
         "probationary": counts["Probationary"],
     }
 
-
 @frappe.whitelist()
-def get_employee(employee_id):
+def get_employee(personnel_info):
     return frappe.db.get_value(
         "Personnel Info",
-        employee_id,
-        ["name as employee_id", "first_name", "last_name", "department"],
+        personnel_info,
+        ["name as personnel_info", "employee_id", "first_name", "last_name", "department"],
         as_dict=True,
     )
 
