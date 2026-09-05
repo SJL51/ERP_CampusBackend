@@ -1,375 +1,389 @@
 {
- "actions": [],
- "allow_rename": 1,
- "creation": "2026-08-22 14:22:40.595077",
- "doctype": "DocType",
- "engine": "InnoDB",
- "field_order": [
-  "personnel_info",
-  "employee_id",
-  "rfid",
-  "last_name",
-  "first_name",
-  "middle_name",
-  "title",
-  "birthdate",
-  "gender",
-  "number_of_dependents",
-  "profile",
-  "religion",
-  "marital_status",
-  "contact_number",
-  "nationality",
-  "birthplace",
-  "mailing_address",
-  "infractions",
-  "employee_status",
-  "date_hired",
-  "department",
-  "emergency_contacts",
-  "family_dependents",
-  "education",
-  "seminars_attended",
-  "skills",
-  "paid_holiday",
-  "leave_credits",
-  "official_business",
-  "late_immunity",
-  "absent_immunity",
-  "tin_number",
-  "sss_number",
-  "philhealth",
-  "pag_ibig",
-  "with_holding_tax",
-  "sss_deduction",
-  "philhealth_deduction",
-  "pagibig_deduction",
-  "gross_pay",
-  "allowance",
-  "reg_rate_pre_hour",
-  "reg_ot_per_hour",
-  "sunday_rate_per_hour",
-  "sunday_ot_per_hour",
-  "holiday_rate_per_hour",
-  "holiday_ot_per_hour",
-  "late_rate_per_hour",
-  "undertime_rate_per_hour",
-  "work_status",
-  "with_atm_card",
-  "leaves",
-  "loan_ledgers"
- ],
- "fields": [
-  {
-   "fieldname": "personnel_info",
-   "fieldtype": "Section Break",
-   "label": "Personnel Info"
-  },
-  {
-   "fieldname": "employee_id",
-   "fieldtype": "Data",
-   "label": "Employee ID"
-  },
-  {
-   "fieldname": "rfid",
-   "fieldtype": "Data",
-   "label": "RFID"
-  },
-  {
-   "fieldname": "last_name",
-   "fieldtype": "Data",
-   "label": "Last Name"
-  },
-  {
-   "fieldname": "first_name",
-   "fieldtype": "Data",
-   "label": "First Name"
-  },
-  {
-   "fieldname": "middle_name",
-   "fieldtype": "Data",
-   "label": "Middle Name"
-  },
-  {
-   "fieldname": "title",
-   "fieldtype": "Data",
-   "label": "Title"
-  },
-  {
-   "fieldname": "birthdate",
-   "fieldtype": "Date",
-   "label": "Birthdate"
-  },
-  {
-   "fieldname": "gender",
-   "fieldtype": "Select",
-   "label": "Gender",
-   "options": "Male\nFemale\nOthers"
-  },
-  {
-   "default": "0",
-   "fieldname": "number_of_dependents",
-   "fieldtype": "Int",
-   "label": "Number of Dependents"
-  },
-  {
-   "fieldname": "profile",
-   "fieldtype": "Attach Image",
-   "label": "Insert Profile"
-  },
-  {
-   "fieldname": "religion",
-   "fieldtype": "Data",
-   "label": "Religion"
-  },
-  {
-   "fieldname": "marital_status",
-   "fieldtype": "Select",
-   "label": "Marital Status",
-   "options": "Single\nMarried\nDivorced\nWidowed\nSeparated"
-  },
-  {
-   "fieldname": "contact_number",
-   "fieldtype": "Data",
-   "label": "Contact Number"
-  },
-  {
-   "fieldname": "nationality",
-   "fieldtype": "Select",
-   "label": "Nationality",
-   "options": "Filipino\nAmerican"
-  },
-  {
-   "fieldname": "birthplace",
-   "fieldtype": "Data",
-   "label": "Birthplace"
-  },
-  {
-   "fieldname": "mailing_address",
-   "fieldtype": "Data",
-   "label": "Mailing Address"
-  },
-  {
-   "fieldname": "employee_status",
-   "fieldtype": "Select",
-   "label": "Employee Status",
-   "options": "Contractual\nPart Timer\nProbationary\nRegular"
-  },
-  {
-   "fieldname": "date_hired",
-   "fieldtype": "Date",
-   "label": "Date Hired"
-  },
-  {
-   "fieldname": "department",
-   "fieldtype": "Select",
-   "label": "Department",
-   "options": "ADMINISTRATION DEPARTMENT\nCOMPUTER SCIENCE DEPARTMENT\nELECTRONICS DEPARTMENT\nFinance\nGENERAL SERVICES DEPARTMENT\nHIGH SCHOOL DEPARTMENT\nHOTEL&RESTAURANT DEPARTMENT\nHuman Resources\nMARINE DEPT.\nProperty Custodian\nRegistrar\nSCIENCE DEPARTMENT\nTOURISM DEPARTMENT"
-  },
-  {
-   "fieldname": "emergency_contacts",
-   "fieldtype": "Small Text",
-   "label": "Emergency Contacts"
-  },
-  {
-   "fieldname": "family_dependents",
-   "fieldtype": "Small Text",
-   "label": "Family/Dependents"
-  },
-  {
-   "fieldname": "education",
-   "fieldtype": "Table",
-   "label": "Education",
-   "options": "SMS Personnel Education"
-  },
-  {
-   "fieldname": "seminars_attended",
-   "fieldtype": "Table",
-   "label": "Seminars Attended",
-   "options": "SMS Personnel Seminar"
-  },
-  {
-   "fieldname": "skills",
-   "fieldtype": "Small Text",
-   "label": "Skills"
-  },
-  {
-   "default": "0",
-   "fieldname": "paid_holiday",
-   "fieldtype": "Check",
-   "label": "Paid Holiday"
-  },
-  {
-   "default": "0",
-   "fieldname": "leave_credits",
-   "fieldtype": "Check",
-   "label": "Leave Credits"
-  },
-  {
-   "default": "0",
-   "fieldname": "official_business",
-   "fieldtype": "Check",
-   "label": "Official Business"
-  },
-  {
-   "default": "0",
-   "fieldname": "late_immunity",
-   "fieldtype": "Check",
-   "label": "Late Immunity"
-  },
-  {
-   "default": "0",
-   "fieldname": "absent_immunity",
-   "fieldtype": "Check",
-   "label": "Absent Immunity"
-  },
-  {
-   "fieldname": "tin_number",
-   "fieldtype": "Data",
-   "label": "TIN NUMBER"
-  },
-  {
-   "fieldname": "sss_number",
-   "fieldtype": "Data",
-   "label": "SSS NUMBER"
-  },
-  {
-   "fieldname": "philhealth",
-   "fieldtype": "Data",
-   "label": "PHILHEALTH"
-  },
-  {
-   "fieldname": "pag_ibig",
-   "fieldtype": "Data",
-   "label": "PAG-IBIG"
-  },
-  {
-   "fieldname": "with_holding_tax",
-   "fieldtype": "Int",
-   "label": "With Holding Tax",
-   "options": "0"
-  },
-  {
-   "fieldname": "sss_deduction",
-   "fieldtype": "Int",
-   "label": "SSS Deduction"
-  },
-  {
-   "fieldname": "philhealth_deduction",
-   "fieldtype": "Int",
-   "label": "PHILHEALTH Deduction"
-  },
-  {
-   "fieldname": "pagibig_deduction",
-   "fieldtype": "Int",
-   "label": "PAG-IBIG Deduction"
-  },
-  {
-   "fieldname": "gross_pay",
-   "fieldtype": "Int",
-   "label": "Gross Pay"
-  },
-  {
-   "fieldname": "allowance",
-   "fieldtype": "Int",
-   "label": "Allowance"
-  },
-  {
-   "fieldname": "reg_rate_pre_hour",
-   "fieldtype": "Int",
-   "label": "Reg. Rate per Hour"
-  },
-  {
-   "fieldname": "reg_ot_per_hour",
-   "fieldtype": "Int",
-   "label": "Reg. OT per Hour"
-  },
-  {
-   "fieldname": "sunday_rate_per_hour",
-   "fieldtype": "Int",
-   "label": "Sunday Rate per Hour"
-  },
-  {
-   "fieldname": "sunday_ot_per_hour",
-   "fieldtype": "Int",
-   "label": "Sunday OT per Hour"
-  },
-  {
-   "fieldname": "holiday_rate_per_hour",
-   "fieldtype": "Int",
-   "label": "Holiday Rate per Hour"
-  },
-  {
-   "fieldname": "holiday_ot_per_hour",
-   "fieldtype": "Int",
-   "label": "Holiday OT per Hour"
-  },
-  {
-   "fieldname": "late_rate_per_hour",
-   "fieldtype": "Int",
-   "label": "Late Rate per Hour"
-  },
-  {
-   "fieldname": "undertime_rate_per_hour",
-   "fieldtype": "Int",
-   "label": "Undertime Rate per Hour"
-  },
-  {
-   "fieldname": "work_status",
-   "fieldtype": "Select",
-   "label": "Work Status",
-   "options": "In Active\nActive\nExecutive\nConsultant"
-  },
-  {
-   "default": "0",
-   "fieldname": "with_atm_card",
-   "fieldtype": "Check",
-   "label": "With ATM Card"
-  },
-  {
-   "fieldname": "infractions",
-   "fieldtype": "Table",
-   "label": "INFRACTIONS",
-   "options": "SMS Personnel Infractions"
-  },
-  {
-   "fieldname": "leaves",
-   "fieldtype": "Table",
-   "label": "Leaves",
-   "options": "SMS Personnel Leaves"
-  },
-  {
-   "fieldname": "loan_ledgers",
-   "fieldtype": "Table",
-   "label": "Loan Ledgers",
-   "options": "SMS Personnel Loan"
-  }
- ],
- "grid_page_length": 50,
- "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2026-08-29 08:41:54.097923",
- "modified_by": "Administrator",
- "module": "Personnel",
- "name": "Personnel Info",
- "owner": "Administrator",
- "permissions": [
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "write": 1
-  }
- ],
- "row_format": "Dynamic",
- "rows_threshold_for_grid_search": 20,
- "sort_field": "modified",
- "sort_order": "DESC",
- "states": []
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2026-08-22 14:22:40.595077",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "personnel_info",
+        "employee_id",
+        "rfid",
+        "last_name",
+        "first_name",
+        "middle_name",
+        "title",
+        "birthdate",
+        "gender",
+        "number_of_dependents",
+        "profile",
+        "religion",
+        "marital_status",
+        "contact_number",
+        "nationality",
+        "birthplace",
+        "mailing_address",
+        "infractions",
+        "employee_status",
+        "date_hired",
+        "department",
+        "emergency_contacts",
+        "family_dependents",
+        "education",
+        "seminars_attended",
+        "skills",
+        "paid_holiday",
+        "leave_credits",
+        "vacation_leave",
+        "sick_leave",
+        "official_business",
+        "late_immunity",
+        "absent_immunity",
+        "tin_number",
+        "sss_number",
+        "philhealth",
+        "pag_ibig",
+        "with_holding_tax",
+        "sss_deduction",
+        "philhealth_deduction",
+        "pagibig_deduction",
+        "gross_pay",
+        "allowance",
+        "reg_rate_pre_hour",
+        "reg_ot_per_hour",
+        "sunday_rate_per_hour",
+        "sunday_ot_per_hour",
+        "holiday_rate_per_hour",
+        "holiday_ot_per_hour",
+        "late_rate_per_hour",
+        "undertime_rate_per_hour",
+        "work_status",
+        "with_atm_card",
+        "leaves",
+        "loan_ledgers"
+    ],
+    "fields": [
+        {
+            "fieldname": "personnel_info",
+            "fieldtype": "Section Break",
+            "label": "Personnel Info"
+        },
+        {
+            "fieldname": "employee_id",
+            "fieldtype": "Data",
+            "label": "Employee ID"
+        },
+        {
+            "fieldname": "rfid",
+            "fieldtype": "Data",
+            "label": "RFID"
+        },
+        {
+            "fieldname": "last_name",
+            "fieldtype": "Data",
+            "label": "Last Name"
+        },
+        {
+            "fieldname": "first_name",
+            "fieldtype": "Data",
+            "label": "First Name"
+        },
+        {
+            "fieldname": "middle_name",
+            "fieldtype": "Data",
+            "label": "Middle Name"
+        },
+        {
+            "fieldname": "title",
+            "fieldtype": "Data",
+            "label": "Title"
+        },
+        {
+            "fieldname": "birthdate",
+            "fieldtype": "Date",
+            "label": "Birthdate"
+        },
+        {
+            "fieldname": "gender",
+            "fieldtype": "Select",
+            "label": "Gender",
+            "options": "Male\nFemale\nOthers"
+        },
+        {
+            "default": "0",
+            "fieldname": "number_of_dependents",
+            "fieldtype": "Int",
+            "label": "Number of Dependents"
+        },
+        {
+            "fieldname": "profile",
+            "fieldtype": "Attach Image",
+            "label": "Insert Profile"
+        },
+        {
+            "fieldname": "religion",
+            "fieldtype": "Data",
+            "label": "Religion"
+        },
+        {
+            "fieldname": "marital_status",
+            "fieldtype": "Select",
+            "label": "Marital Status",
+            "options": "Single\nMarried\nDivorced\nWidowed\nSeparated"
+        },
+        {
+            "fieldname": "contact_number",
+            "fieldtype": "Data",
+            "label": "Contact Number"
+        },
+        {
+            "fieldname": "nationality",
+            "fieldtype": "Select",
+            "label": "Nationality",
+            "options": "Filipino\nAmerican"
+        },
+        {
+            "fieldname": "birthplace",
+            "fieldtype": "Data",
+            "label": "Birthplace"
+        },
+        {
+            "fieldname": "mailing_address",
+            "fieldtype": "Data",
+            "label": "Mailing Address"
+        },
+        {
+            "fieldname": "employee_status",
+            "fieldtype": "Select",
+            "label": "Employee Status",
+            "options": "Contractual\nPart Timer\nProbationary\nRegular"
+        },
+        {
+            "fieldname": "date_hired",
+            "fieldtype": "Date",
+            "label": "Date Hired"
+        },
+        {
+            "fieldname": "department",
+            "fieldtype": "Select",
+            "label": "Department",
+            "options": "ADMINISTRATION DEPARTMENT\nCOMPUTER SCIENCE DEPARTMENT\nELECTRONICS DEPARTMENT\nFinance\nGENERAL SERVICES DEPARTMENT\nHIGH SCHOOL DEPARTMENT\nHOTEL&RESTAURANT DEPARTMENT\nHuman Resources\nMARINE DEPT.\nProperty Custodian\nRegistrar\nSCIENCE DEPARTMENT\nTOURISM DEPARTMENT"
+        },
+        {
+            "fieldname": "emergency_contacts",
+            "fieldtype": "Small Text",
+            "label": "Emergency Contacts"
+        },
+        {
+            "fieldname": "family_dependents",
+            "fieldtype": "Small Text",
+            "label": "Family/Dependents"
+        },
+        {
+            "fieldname": "education",
+            "fieldtype": "Table",
+            "label": "Education",
+            "options": "SMS Personnel Education"
+        },
+        {
+            "fieldname": "seminars_attended",
+            "fieldtype": "Table",
+            "label": "Seminars Attended",
+            "options": "SMS Personnel Seminar"
+        },
+        {
+            "fieldname": "skills",
+            "fieldtype": "Small Text",
+            "label": "Skills"
+        },
+        {
+            "default": "0",
+            "fieldname": "paid_holiday",
+            "fieldtype": "Check",
+            "label": "Paid Holiday"
+        },
+        {
+            "default": "0",
+            "fieldname": "leave_credits",
+            "fieldtype": "Check",
+            "label": "Leave Credits"
+        },
+        {
+            "default": "0",
+            "fieldname": "vacation_leave",
+            "fieldtype": "Float",
+            "label": "Vacation Leave"
+        },
+        {
+            "default": "0",
+            "fieldname": "sick_leave",
+            "fieldtype": "Float",
+            "label": "Sick Leave"
+        },
+        {
+            "default": "0",
+            "fieldname": "official_business",
+            "fieldtype": "Check",
+            "label": "Official Business"
+        },
+        {
+            "default": "0",
+            "fieldname": "late_immunity",
+            "fieldtype": "Check",
+            "label": "Late Immunity"
+        },
+        {
+            "default": "0",
+            "fieldname": "absent_immunity",
+            "fieldtype": "Check",
+            "label": "Absent Immunity"
+        },
+        {
+            "fieldname": "tin_number",
+            "fieldtype": "Data",
+            "label": "TIN NUMBER"
+        },
+        {
+            "fieldname": "sss_number",
+            "fieldtype": "Data",
+            "label": "SSS NUMBER"
+        },
+        {
+            "fieldname": "philhealth",
+            "fieldtype": "Data",
+            "label": "PHILHEALTH"
+        },
+        {
+            "fieldname": "pag_ibig",
+            "fieldtype": "Data",
+            "label": "PAG-IBIG"
+        },
+        {
+            "fieldname": "with_holding_tax",
+            "fieldtype": "Int",
+            "label": "With Holding Tax",
+            "options": "0"
+        },
+        {
+            "fieldname": "sss_deduction",
+            "fieldtype": "Int",
+            "label": "SSS Deduction"
+        },
+        {
+            "fieldname": "philhealth_deduction",
+            "fieldtype": "Int",
+            "label": "PHILHEALTH Deduction"
+        },
+        {
+            "fieldname": "pagibig_deduction",
+            "fieldtype": "Int",
+            "label": "PAG-IBIG Deduction"
+        },
+        {
+            "fieldname": "gross_pay",
+            "fieldtype": "Int",
+            "label": "Gross Pay"
+        },
+        {
+            "fieldname": "allowance",
+            "fieldtype": "Int",
+            "label": "Allowance"
+        },
+        {
+            "fieldname": "reg_rate_pre_hour",
+            "fieldtype": "Int",
+            "label": "Reg. Rate per Hour"
+        },
+        {
+            "fieldname": "reg_ot_per_hour",
+            "fieldtype": "Int",
+            "label": "Reg. OT per Hour"
+        },
+        {
+            "fieldname": "sunday_rate_per_hour",
+            "fieldtype": "Int",
+            "label": "Sunday Rate per Hour"
+        },
+        {
+            "fieldname": "sunday_ot_per_hour",
+            "fieldtype": "Int",
+            "label": "Sunday OT per Hour"
+        },
+        {
+            "fieldname": "holiday_rate_per_hour",
+            "fieldtype": "Int",
+            "label": "Holiday Rate per Hour"
+        },
+        {
+            "fieldname": "holiday_ot_per_hour",
+            "fieldtype": "Int",
+            "label": "Holiday OT per Hour"
+        },
+        {
+            "fieldname": "late_rate_per_hour",
+            "fieldtype": "Int",
+            "label": "Late Rate per Hour"
+        },
+        {
+            "fieldname": "undertime_rate_per_hour",
+            "fieldtype": "Int",
+            "label": "Undertime Rate per Hour"
+        },
+        {
+            "fieldname": "work_status",
+            "fieldtype": "Select",
+            "label": "Work Status",
+            "options": "In Active\nActive\nExecutive\nConsultant"
+        },
+        {
+            "default": "0",
+            "fieldname": "with_atm_card",
+            "fieldtype": "Check",
+            "label": "With ATM Card"
+        },
+        {
+            "fieldname": "infractions",
+            "fieldtype": "Table",
+            "label": "INFRACTIONS",
+            "options": "SMS Personnel Infractions"
+        },
+        {
+            "fieldname": "leaves",
+            "fieldtype": "Table",
+            "label": "Leaves",
+            "options": "SMS Personnel Leaves"
+        },
+        {
+            "fieldname": "loan_ledgers",
+            "fieldtype": "Table",
+            "label": "Loan Ledgers",
+            "options": "SMS Personnel Loan"
+        }
+    ],
+    "grid_page_length": 50,
+    "index_web_pages_for_search": 1,
+    "links": [],
+    "modified": "2026-08-29 08:41:54.097923",
+    "modified_by": "Administrator",
+    "module": "Personnel",
+    "name": "Personnel Info",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "row_format": "Dynamic",
+    "rows_threshold_for_grid_search": 20,
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
 }
