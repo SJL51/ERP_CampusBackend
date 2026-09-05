@@ -76,15 +76,20 @@ def list_pending_leaves(search=None, limit=20):
 
 @frappe.whitelist()
 def approve_leave_application(employee_id, row_name, days_approved=None, with_pay=None, without_pay=None, immediate_superior=None, hrd_head=None):
+    if "HR Approver" not in frappe.get_roles():
+        frappe.throw("You are not permitted to approve leave applications.", frappe.PermissionError)
+
     parent = frappe.get_doc("Personnel Info", employee_id)
     for row in parent.leaves:
         if row.name == row_name:
+            if row.status != "Pending":
+                frappe.throw(f"This leave cannot be approved from its current status ({row.status}).")
             row.status = "Approved"
             row.days_approved = days_approved
             row.with_pay = with_pay
             row.without_pay = without_pay
             row.immediate_superior = immediate_superior
-            row.hrd_head = hrd_head
+            row.hrd_head = frappe.session.user
             break
     else:
         frappe.throw(f"Leave row {row_name} not found on employee {employee_id}")
@@ -93,12 +98,17 @@ def approve_leave_application(employee_id, row_name, days_approved=None, with_pa
 
 @frappe.whitelist()
 def reject_leave_application(employee_id, row_name, immediate_superior=None, hrd_head=None):
+    if "HR Approver" not in frappe.get_roles():
+        frappe.throw("You are not permitted to reject leave applications.", frappe.PermissionError)
+
     parent = frappe.get_doc("Personnel Info", employee_id)
     for row in parent.leaves:
         if row.name == row_name:
+            if row.status == "Rejected":
+                frappe.throw("This leave has already been rejected.")
             row.status = "Rejected"
             row.immediate_superior = immediate_superior
-            row.hrd_head = hrd_head
+            row.hrd_head = frappe.session.user
             break
     else:
         frappe.throw(f"Leave row {row_name} not found on employee {employee_id}")
@@ -176,7 +186,7 @@ def compute_loan_terms(amount, interest_rate, term):
 
 @frappe.whitelist()
 def approve_loan_application(employee_id, row_name, interest_rate=None, term=None, interest_cost=None, amortization=None, loan_balance=None, recommended_by=None, approved_by=None):
-    if "HR Manager" not in frappe.get_roles():
+    if "HR Approver" not in frappe.get_roles():
         frappe.throw("You are not permitted to approve loan applications.", frappe.PermissionError)
 
     parent = frappe.get_doc("Personnel Info", employee_id)
@@ -200,12 +210,17 @@ def approve_loan_application(employee_id, row_name, interest_rate=None, term=Non
 
 @frappe.whitelist()
 def reject_loan_application(employee_id, row_name, recommended_by=None, approved_by=None):
+    if "HR Approver" not in frappe.get_roles():
+        frappe.throw("You are not permitted to reject loan applications.", frappe.PermissionError)
+
     parent = frappe.get_doc("Personnel Info", employee_id)
     for row in parent.loan_ledgers:
         if row.name == row_name:
+            if row.status in ("Rejected", "Released"):
+                frappe.throw(f"This loan cannot be rejected from its current status ({row.status}).")
             row.status = "Rejected"
             row.recommended_by = recommended_by
-            row.approved_by = approved_by
+            row.approved_by = frappe.session.user  # derive from session, don't trust client input
             break
     else:
         frappe.throw(f"Loan row {row_name} not found on employee {employee_id}")
