@@ -176,9 +176,14 @@ def compute_loan_terms(amount, interest_rate, term):
 
 @frappe.whitelist()
 def approve_loan_application(employee_id, row_name, interest_rate=None, term=None, interest_cost=None, amortization=None, loan_balance=None, recommended_by=None, approved_by=None):
+    if "HR Manager" not in frappe.get_roles():
+        frappe.throw("You are not permitted to approve loan applications.", frappe.PermissionError)
+
     parent = frappe.get_doc("Personnel Info", employee_id)
     for row in parent.loan_ledgers:
         if row.name == row_name:
+            if row.status != "Pending":
+                frappe.throw(f"This loan cannot be approved from its current status ({row.status}).")
             row.status = "Approved"
             row.interest_rate = interest_rate
             row.term = term
@@ -186,7 +191,7 @@ def approve_loan_application(employee_id, row_name, interest_rate=None, term=Non
             row.amortization = amortization
             row.loan_balance = loan_balance
             row.recommended_by = recommended_by
-            row.approved_by = approved_by
+            row.approved_by = frappe.session.user  # derive from session, don't trust client input
             break
     else:
         frappe.throw(f"Loan row {row_name} not found on employee {employee_id}")
