@@ -256,6 +256,10 @@ def release_loan_application(personnel_info, row_name, released_by=None):
     parent = frappe.get_doc("Personnel Info", personnel_info)
     for row in parent.loan_ledgers:
         if row.name == row_name:
+            if row.status == "Released":
+                frappe.throw("This loan has already been released.")
+            if row.status != "Approved":
+                frappe.throw("This loan cannot be released unless it is in Approved status.")
             if not row.approved_by:
                 frappe.throw("This loan cannot be released until it has a recorded Approved By value.")
             row.status = "Released"
